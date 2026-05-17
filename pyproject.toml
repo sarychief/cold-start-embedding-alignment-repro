@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "cold-start-embedding-alignment"
+version = "0.1.0"
+description = "Reproducible cold-start recommendation experiments"
+authors = ["Roman Naumkin"]
+readme = "README.md"
+packages = [
+    { include = "experiment", from = "src" },
+    { include = "paper", from = "src" },
+    { include = "reports", from = "src" },
+    { include = "preparation", from = "src" },
+]
+include = ["src/paths.py"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.13"
+numpy = ">=1.26,<3.0"
+pandas = ">=2.2,<3.0"
+polars = { extras = ["rt64"], version = ">=1.0,<2.0" }
+torch = ">=2.6,<2.7"
+scikit-learn = ">=1.5,<2.0"
+matplotlib = ">=3.8,<4.0"
+tqdm = ">=4.66,<5.0"
+pyarrow = ">=19.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.2.1"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
